@@ -4,9 +4,10 @@ using System;
 using System.Reflection;
 using UnityEngine;
 
-namespace COITitanTools.Tools;
+namespace COITitanTools.Tools.Extensions;
 
-// TODO: Update these extensions with enums of possible properties
+// TODO: Update these extensions with enums of possible properties?
+// TODO: Possibly lift Proto inheritence restriction if necessary
 public static class ReflectionExtensions
 {
     /// <summary>
@@ -170,5 +171,20 @@ public static class ReflectionExtensions
         }
 
         throw new InvalidOperationException($"Static field or backing field '{fieldName}' not found on {type.Name}");
+    }
+
+    /// <summary>
+    /// This extension allows for the calling of private methods on ANY OBJECT. Only use if you know what you are doing!!!
+    /// </summary>
+    /// <param name="obj"></param>
+    /// <param name="methodName"></param>
+    /// <param name="args"></param>
+    /// <returns></returns>
+    public static object Call(this object obj, string methodName, params object[] args)
+    {
+        var methodInfo = obj.GetType().GetMethod(methodName, BindingFlags.NonPublic | BindingFlags.Instance);
+        if (methodInfo is not null)
+            return methodInfo.Invoke(obj, args);
+        return null;
     }
 }
