@@ -4,6 +4,7 @@
     <TargetFramework>net471</TargetFramework>
     <Configurations>Debug;Release</Configurations>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<LangVersion>10.0</LangVersion>
     <WarningLevel>9999</WarningLevel>
   </PropertyGroup>
 
@@ -87,5 +88,9 @@
     <Reference Include="Unity.VectorGraphics">
       <HintPath>$(COI_ROOT)\Captain of Industry_Data\Managed\Unity.VectorGraphics.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
