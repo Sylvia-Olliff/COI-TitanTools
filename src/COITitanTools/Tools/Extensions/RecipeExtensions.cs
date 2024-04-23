@@ -58,4 +58,8 @@ public static class RecipeExtensions
         return builder.AddAirPolution(quantity / 2);
     }
 
+    /**
+     * END EXHAUST EXTENSIONS
+     */
+
 }

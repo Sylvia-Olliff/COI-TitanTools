@@ -21,15 +21,14 @@ public static class ProtoExtensions
         fieldInfo?.SetValue(proto, newName);
     }
 
-    public static void ChangeCosts(this FarmProto farmProto, EntityCosts newCosts)
+    public static void ChangeCosts(this EntityProto proto, EntityCosts newCosts)
     {
-        // Costs property is on EntityProto
         Type entityType = typeof(EntityProto);
 
         FieldInfo costsField = entityType.GetField("<Costs>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic);
         if (costsField is not null)
         {
-            costsField.SetValue(farmProto, newCosts);
+            costsField.SetValue(proto, newCosts);
             COILog.Info("Costs updated successfully");
         }
         else
